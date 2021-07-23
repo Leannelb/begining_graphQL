@@ -36,6 +36,7 @@ const typeDefs = `
     }
     type Query {
         getAuthors: [Author]
+        retrieveAuthor(id: ID!): Author
     }    
 `
 
@@ -43,6 +44,7 @@ const typeDefs = `
 const resolvers = {
     Query: {
         getAuthors: () => authors,
+        retrieveAuthor: ( obj, { id })  => authors.find(author => author.id === id)
     }
 };
 
